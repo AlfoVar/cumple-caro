@@ -12,8 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
     addFloatingParticles();
     
     // Agregar evento al iframe para detectar cuando carga
-    const iframe = document.getElementById('canva-video');
-    iframe.addEventListener('load', hideLoadingOverlay);
+    const iframe = document.getElementById('main-video') || document.getElementById('canva-video');
+    if (iframe) {
+        iframe.addEventListener('load', hideLoadingOverlay);
+    }
     
     // Ocultar loading después de 3 segundos como fallback
     setTimeout(hideLoadingOverlay, 3000);
@@ -174,18 +176,29 @@ function copyLink() {
     });
 }
 
-// Función para descargar regalo - abrir enlace directo de Canva
+// Función para descargar regalo - abrir enlace directo del video
 function downloadGift() {
-    // Enlace directo al diseño de Canva para descarga
-    const canvaDirectLink = 'https://www.canva.com/design/DAGycVW93GM/QfI1SVFBRh4MpVVBIBt1cg/watch?utm_content=DAGycVW93GM&utm_campaign=designshare&utm_medium=embeds&utm_source=link';
+    // Detectar si es YouTube o Canva
+    const youtubeVideo = document.getElementById('main-video');
+    const canvaVideo = document.getElementById('canva-video');
     
-    // Abrir en nueva pestaña
-    window.open(canvaDirectLink, '_blank');
-    
-    // Mostrar mensaje informativo
-    setTimeout(() => {
-        alert('Se ha abierto Canva en una nueva pestaña. Desde ahí podrás descargar el video usando las opciones de Canva.');
-    }, 1000);
+    if (youtubeVideo && !youtubeVideo.style.display === 'none') {
+        // Es un video de YouTube
+        const youtubeUrl = 'https://www.youtube.com/watch?v=44CYeqwdQgk';
+        window.open(youtubeUrl, '_blank');
+        
+        setTimeout(() => {
+            alert('Se ha abierto YouTube en una nueva pestaña. Para descargar el video puedes usar herramientas como yt-dlp o servicios online de descarga de YouTube.');
+        }, 1000);
+    } else if (canvaVideo) {
+        // Es un video de Canva
+        const canvaDirectLink = 'https://www.canva.com/design/DAGycEhHEAM/UgJ7fJ6P7mvOWm2K_8t6og/watch?utm_content=DAGycEhHEAM&utm_campaign=designshare&utm_medium=embeds&utm_source=link';
+        window.open(canvaDirectLink, '_blank');
+        
+        setTimeout(() => {
+            alert('Se ha abierto Canva en una nueva pestaña. Desde ahí podrás descargar el video usando las opciones de Canva.');
+        }, 1000);
+    }
 }
 
 // Volver a la página anterior
@@ -261,10 +274,12 @@ if (!hasHover) {
     document.body.classList.add('touch-device');
 }
 
-// Función para cambiar el video de Canva (útil para personalización)
-function changeCanvaVideo(newSrc) {
-    const iframe = document.getElementById('canva-video');
+// Función para cambiar el video (YouTube o Canva)
+function changeVideo(newSrc, type = 'youtube') {
+    const iframe = document.getElementById('main-video') || document.getElementById('canva-video');
     const overlay = document.getElementById('loadingOverlay');
+    
+    if (!iframe) return;
     
     // Mostrar loading
     overlay.style.display = 'flex';
@@ -272,6 +287,16 @@ function changeCanvaVideo(newSrc) {
     
     // Cambiar src
     iframe.src = newSrc;
+    
+    // Actualizar el aspect ratio según el tipo
+    const videoWrapper = document.querySelector('.video-wrapper');
+    if (type === 'youtube') {
+        videoWrapper.style.paddingBottom = '56.25%'; // 16:9 para YouTube
+        videoWrapper.style.maxWidth = '800px';
+    } else if (type === 'canva-vertical') {
+        videoWrapper.style.paddingBottom = '177.7778%'; // 9:16 para videos verticales
+        videoWrapper.style.maxWidth = '400px';
+    }
     
     // Ocultar loading cuando cargue
     iframe.onload = hideLoadingOverlay;
@@ -282,13 +307,13 @@ function changeCanvaVideo(newSrc) {
 
 // Mensajes de console para desarrolladores
 console.log('🎁 ¡Página del regalo cargada exitosamente!');
-console.log('🎬 Para cambiar el video de Canva, usa: changeCanvaVideo("tu-nuevo-enlace")');
+console.log('🎬 Para cambiar el video, usa: changeVideo("nuevo-enlace", "youtube") o changeVideo("nuevo-enlace", "canva-vertical")');
 console.log('🎉 Para relanzar confetti, usa: relaunchConfetti()');
 console.log('✨ Easter egg: Triple click en el título para más confetti');
 
 // Exportar funciones útiles
 window.giftPage = {
-    changeCanvaVideo: changeCanvaVideo,
+    changeVideo: changeVideo,
     relaunchConfetti: relaunchConfetti,
     shareGift: shareGift,
     goBack: goBack

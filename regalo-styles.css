@@ -166,7 +166,7 @@ body {
     position: relative;
     width: 100%;
     height: 0;
-    padding-bottom: 177.7778%; /* Aspect ratio 9:16 para videos verticales de Instagram */
+    padding-bottom: 56.25%; /* Aspect ratio 16:9 para YouTube */
     background: rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     overflow: hidden;
@@ -174,7 +174,7 @@ body {
     border: 2px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-width: 400px; /* Limitar ancho máximo para videos verticales */
+    max-width: 800px; /* Ancho máximo para YouTube */
     margin: 0 auto; /* Centrar el video */
 }
 
@@ -183,7 +183,7 @@ body {
     box-shadow: 0 30px 60px rgba(0,0,0,0.4);
 }
 
-#canva-video {
+#main-video, #canva-video {
     position: absolute;
     top: 0;
     left: 0;
@@ -566,7 +566,7 @@ body {
     
     .video-wrapper {
         max-width: 100%; /* En móvil usar todo el ancho disponible */
-        padding-bottom: 177.7778%; /* Mantener aspect ratio vertical */
+        padding-bottom: 56.25%; /* Mantener aspect ratio 16:9 para YouTube */
     }
     
     .message-card {
@@ -608,10 +608,10 @@ body {
     .video-wrapper {
         border-radius: 15px;
         max-width: 100%;
-        padding-bottom: 177.7778%; /* Aspect ratio para móvil */
+        padding-bottom: 56.25%; /* Aspect ratio 16:9 para YouTube en móvil */
     }
     
-    #canva-video {
+    #main-video, #canva-video {
         border-radius: 13px;
     }
     
