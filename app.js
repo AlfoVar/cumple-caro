@@ -57,6 +57,17 @@ function getCurrentTime() {
 
 // Función de cuenta regresiva
 function startCountdown() {
+    // Verificar inmediatamente si la fecha ya pasó
+    const now = getCurrentTime();
+    const distance = targetDate - now;
+    
+    if (distance <= 0) {
+        // Si la fecha ya pasó, mostrar el regalo inmediatamente
+        console.log('🎁 La fecha objetivo ya pasó, mostrando regalo inmediatamente');
+        showGiftButton();
+        return;
+    }
+    
     countdownInterval = setInterval(function() {
         const now = getCurrentTime(); // Usar función que maneja servidor/local
         const distance = targetDate - now;
@@ -368,6 +379,14 @@ console.log('   setTargetDateWithTimezone("2024-12-25T00:00:00-05:00")');
 console.log('🕐 Para usar hora del servidor: toggleServerTime(true)');
 console.log('🎁 Para saltarse la cuenta regresiva durante testing: skipCountdown()');
 console.log(`⏰ Modo actual: ${useServerTime ? 'Hora del servidor' : 'Hora local del usuario'}`);
+
+// Debug de fechas
+const now = getCurrentTime();
+const distance = targetDate - now;
+console.log(`📅 Fecha objetivo: ${new Date(targetDate).toLocaleString()}`);
+console.log(`📅 Fecha actual: ${new Date(now).toLocaleString()}`);
+console.log(`⏱️ Diferencia en ms: ${distance}`);
+console.log(`🎯 Estado: ${distance > 0 ? 'Cuenta regresiva activa' : 'Tiempo cumplido - Regalo disponible'}`);
 
 // Exportar funciones útiles para personalización
 window.giftPage = {
