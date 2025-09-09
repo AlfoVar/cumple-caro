@@ -4,8 +4,66 @@ let confettiCtx;
 let confettiParticles = [];
 let confettiAnimation;
 
+// Verificar si el usuario llegó correctamente (desde index.html)
+function checkValidAccess() {
+    // Verificar si hay una marca de acceso válido en sessionStorage
+    const validAccess = sessionStorage.getItem('validGiftAccess');
+    const accessTime = sessionStorage.getItem('giftAccessTime');
+    
+    // Verificar si el acceso es reciente (menos de 5 minutos)
+    const currentTime = Date.now();
+    const fiveMinutes = 5 * 60 * 1000;
+    const isRecentAccess = accessTime && (currentTime - parseInt(accessTime)) < fiveMinutes;
+    
+    // Verificar referrer como respaldo
+    const referrer = document.referrer;
+    const currentHost = window.location.hostname;
+    const comesFromIndex = referrer && (
+        referrer.includes('index.html') || 
+        (referrer.includes(currentHost) && !referrer.includes('regalo.html'))
+    );
+    
+    // Permitir acceso si tiene sessionStorage válido Y reciente, O viene del index
+    if ((validAccess === 'true' && isRecentAccess) || comesFromIndex) {
+        console.log('✅ Acceso válido detectado');
+        return true;
+    }
+    
+    // Si no cumple ninguna condición, es acceso directo
+    console.log('⚠️ Acceso directo detectado - redirigiendo al inicio');
+    
+    // Mostrar mensaje personalizado y redirigir
+    setTimeout(() => {
+        const userChoice = confirm(
+            '🎁 ¡Hola! Parece que llegaste directamente a la página del regalo.\n\n' +
+            '¿Te gustaría ir al inicio para vivir la experiencia completa con la cuenta regresiva y la sorpresa? ✨\n\n' +
+            'Presiona "Aceptar" para ir al inicio o "Cancelar" para quedarte aquí.'
+        );
+        
+        if (userChoice) {
+            window.location.href = 'index.html';
+        } else {
+            // Si decide quedarse, limpiar la verificación para no molestar más
+            sessionStorage.setItem('userChoiceStay', 'true');
+            console.log('👤 Usuario decidió quedarse en la página del regalo');
+        }
+    }, 500);
+    
+    return false;
+}
+
 // Inicialización cuando se carga la página
 document.addEventListener('DOMContentLoaded', function() {
+    // Verificar si el usuario ya decidió quedarse anteriormente
+    const userChoiceStay = sessionStorage.getItem('userChoiceStay');
+    
+    // Solo verificar acceso si no hay una decisión previa de quedarse
+    if (userChoiceStay !== 'true') {
+        checkValidAccess();
+    } else {
+        console.log('👤 Usuario previamente eligió quedarse - omitiendo verificación');
+    }
+    
     initConfetti();
     launchWelcomeConfetti();
     hideLoadingOverlay();

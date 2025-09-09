@@ -542,6 +542,28 @@ body {
     z-index: 999;
 }
 
+/* Mensajes flotantes solo en pantallas grandes */
+@media (min-width: 1024px) {
+    .floating-messages {
+        display: block !important;
+    }
+    
+    .floating-message:nth-child(1) {
+        top: 12%;
+        left: 3%;
+    }
+    
+    .floating-message:nth-child(2) {
+        top: 22%;
+        right: 3%;
+    }
+    
+    .floating-message:nth-child(3) {
+        bottom: 12%;
+        left: 5%;
+    }
+}
+
 /* Responsivo */
 @media (max-width: 768px) {
     .birthday-title {
@@ -626,23 +648,9 @@ body {
         font-size: 1rem;
     }
     
-    /* Reposicionar mensajes flotantes en móviles */
-    .floating-message:nth-child(1) {
-        top: 10%;
-        left: 3%;
-        font-size: 0.9rem;
-    }
-    
-    .floating-message:nth-child(2) {
-        top: 20%;
-        right: 3%;
-        font-size: 0.9rem;
-    }
-    
-    .floating-message:nth-child(3) {
-        bottom: 10%;
-        left: 5%;
-        font-size: 0.9rem;
+    /* Ocultar mensajes flotantes en tablets para evitar solapamientos */
+    .floating-messages {
+        display: none;
     }
     
     /* Optimización adicional para pantallas muy pequeñas */
@@ -670,22 +678,8 @@ body {
         text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
     }
     
-    /* Ajustar mensajes flotantes para pantallas muy pequeñas */
-    .floating-message:nth-child(1) {
-        top: 8%;
-        left: 2%;
-        font-size: 0.8rem;
-    }
-    
-    .floating-message:nth-child(2) {
-        top: 15%;
-        right: 2%;
-        font-size: 0.8rem;
-    }
-    
-    .floating-message:nth-child(3) {
-        bottom: 8%;
-        left: 3%;
-        font-size: 0.8rem;
+    /* Mantener mensajes flotantes ocultos en móviles */
+    .floating-messages {
+        display: none;
     }
 }

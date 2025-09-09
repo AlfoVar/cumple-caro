@@ -3,7 +3,7 @@
 // IMPORTANTE: Esta fecha usa la zona horaria local del usuario
 // Para especificar zona horaria, usa formato ISO: '2024-12-25T00:00:00-04:00' (GMT-5)
 // O para UTC: '2024-12-25T00:00:00Z'
-const targetDate = new Date('2025-09-08T23:00:00-04:00').getTime(); // Ejemplo: 25 de diciembre, GMT-5 (Colombia/Perú)
+const targetDate = new Date('2025-09-09T12:00:00-04:00').getTime(); // Ejemplo: 25 de diciembre, GMT-5 (Colombia/Perú)
 
 // Variables globales
 let countdownInterval;
@@ -129,6 +129,10 @@ function setupGiftInteraction() {
 
 // Función para abrir el regalo
 function openGift() {
+    // Marcar que el acceso al regalo es válido
+    sessionStorage.setItem('validGiftAccess', 'true');
+    sessionStorage.setItem('giftAccessTime', Date.now().toString());
+    
     // Efectos especiales antes de redirigir
     launchConfetti();
     playOpeningAnimation();
