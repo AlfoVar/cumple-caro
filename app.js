@@ -3,7 +3,7 @@
 // IMPORTANTE: Esta fecha usa la zona horaria local del usuario
 // Para especificar zona horaria, usa formato ISO: '2024-12-25T00:00:00-04:00' (GMT-5)
 // O para UTC: '2024-12-25T00:00:00Z'
-const targetDate = new Date('2024-09-09T12:00:00-04:00').getTime(); // Ejemplo: 25 de diciembre, GMT-5 (Colombia/Perú)
+const targetDate = new Date('2025-09-08T23:00:00-04:00').getTime(); // Ejemplo: 25 de diciembre, GMT-5 (Colombia/Perú)
 
 // Variables globales
 let countdownInterval;
@@ -375,7 +375,7 @@ document.addEventListener('touchend', function(event) {
 console.log('🎉 ¡Página de cumpleaños cargada exitosamente!');
 console.log('💝 Para personalizar la fecha objetivo, usa:');
 console.log('   setTargetDate(año, mes, día, hora, minuto, segundo)');
-console.log('   setTargetDateWithTimezone("2024-12-25T00:00:00-05:00")');
+console.log('   setTargetDateWithTimezone("2025-09-09T00:00:00-05:00")');
 console.log('🕐 Para usar hora del servidor: toggleServerTime(true)');
 console.log('🎁 Para saltarse la cuenta regresiva durante testing: skipCountdown()');
 console.log(`⏰ Modo actual: ${useServerTime ? 'Hora del servidor' : 'Hora local del usuario'}`);

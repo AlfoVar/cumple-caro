@@ -491,20 +491,20 @@ body {
 }
 
 .floating-message:nth-child(1) {
-    top: 20%;
-    left: 10%;
+    top: 15%;
+    left: 5%;
     animation-delay: 0s;
 }
 
 .floating-message:nth-child(2) {
-    top: 60%;
-    right: 10%;
+    top: 25%;
+    right: 5%;
     animation-delay: 1.5s;
 }
 
 .floating-message:nth-child(3) {
-    bottom: 20%;
-    left: 20%;
+    bottom: 15%;
+    left: 8%;
     animation-delay: 3s;
 }
 
@@ -626,6 +626,25 @@ body {
         font-size: 1rem;
     }
     
+    /* Reposicionar mensajes flotantes en móviles */
+    .floating-message:nth-child(1) {
+        top: 10%;
+        left: 3%;
+        font-size: 0.9rem;
+    }
+    
+    .floating-message:nth-child(2) {
+        top: 20%;
+        right: 3%;
+        font-size: 0.9rem;
+    }
+    
+    .floating-message:nth-child(3) {
+        bottom: 10%;
+        left: 5%;
+        font-size: 0.9rem;
+    }
+    
     /* Optimización adicional para pantallas muy pequeñas */
     .background-container::before {
         opacity: 0.2; /* Aún más atenuada en pantallas pequeñas */
@@ -649,5 +668,24 @@ body {
     
     .countdown-title {
         text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+    }
+    
+    /* Ajustar mensajes flotantes para pantallas muy pequeñas */
+    .floating-message:nth-child(1) {
+        top: 8%;
+        left: 2%;
+        font-size: 0.8rem;
+    }
+    
+    .floating-message:nth-child(2) {
+        top: 15%;
+        right: 2%;
+        font-size: 0.8rem;
+    }
+    
+    .floating-message:nth-child(3) {
+        bottom: 8%;
+        left: 3%;
+        font-size: 0.8rem;
     }
 }
