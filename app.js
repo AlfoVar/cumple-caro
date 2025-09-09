@@ -3,7 +3,7 @@
 // IMPORTANTE: Esta fecha usa la zona horaria local del usuario
 // Para especificar zona horaria, usa formato ISO: '2024-12-25T00:00:00-04:00' (GMT-5)
 // O para UTC: '2024-12-25T00:00:00Z'
-const targetDate = new Date('2025-09-09T12:00:00-04:00').getTime(); // Ejemplo: 25 de diciembre, GMT-5 (Colombia/Perú)
+const targetDate = new Date('2024-09-09T12:00:00-04:00').getTime(); // Ejemplo: 25 de diciembre, GMT-5 (Colombia/Perú)
 
 // Variables globales
 let countdownInterval;
