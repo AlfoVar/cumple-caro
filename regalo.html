@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Tu Regalo Especial! 🎁 - Feliz Cumpleaños Caro</title>
+    <link rel="stylesheet" href="regalo-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Fondo animado -->
+    <div class="background-container">
+        <div class="particles-bg"></div>
+        <div class="gradient-overlay"></div>
+    </div>
+
+    <!-- Confetti canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Contenedor principal -->
+    <div class="main-container">
+        <!-- Header con título -->
+        <header class="gift-header">
+            <h1 class="gift-title">
+                <span class="sparkle">✨</span>
+                ¡Tu Regalo Especial!
+                <span class="sparkle">✨</span>
+            </h1>
+            <p class="gift-subtitle">Esperamos que disfrutes esta sorpresa hecha con mucho cariño</p>
+        </header>
+
+        <!-- Contenedor del video -->
+        <div class="video-container">
+            <div class="video-wrapper">
+                <!-- Video de Canva integrado -->
+                <iframe 
+                    id="canva-video"
+                    loading="lazy" 
+                    src="https://www.canva.com/design/DAGycVW93GM/QfI1SVFBRh4MpVVBIBt1cg/watch?embed"
+                    allowfullscreen="allowfullscreen" 
+                    allow="fullscreen">
+                </iframe>
+                
+                <!-- Overlay de carga -->
+                <div class="loading-overlay" id="loadingOverlay">
+                    <div class="loading-spinner">
+                        <i class="fas fa-gift fa-spin"></i>
+                    </div>
+                    <p class="loading-text">Preparando tu regalo especial...</p>
+                </div>
+            </div>
+            
+            <!-- Información adicional -->
+            <div class="video-info">
+                <div class="info-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Hecho con amor</h3>
+                    <p>Este video fue creado especialmente para ti en tu día especial</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mensaje personal -->
+        <div class="personal-message">
+            <div class="message-card">
+                <div class="message-icon">
+                    <i class="fas fa-birthday-cake"></i>
+                </div>
+                <h2>¡Feliz Cumpleaños!</h2>
+                <p class="message-text">
+                    Esperamos que este pequeño regalo te haga sonreír tanto como tú nos haces sonreír a nosotros. 
+                    ¡Que tengas un día lleno de alegría, amor y muchas sorpresas!
+                </p>
+                <div class="signature">
+                    <p>Con todo nuestro cariño ❤️</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="action-buttons">
+            <button class="btn btn-primary" onclick="shareGift()">
+                <i class="fas fa-share-alt"></i>
+                Compartir
+            </button>
+            <button class="btn btn-secondary" onclick="downloadGift()">
+                <i class="fas fa-download"></i>
+                Descargar
+            </button>
+            <button class="btn btn-back" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i>
+                Volver
+            </button>
+        </div>
+
+        <!-- Elementos decorativos flotantes -->
+        <div class="floating-elements">
+            <div class="floating-heart"><i class="fas fa-heart"></i></div>
+            <div class="floating-star"><i class="fas fa-star"></i></div>
+            <div class="floating-gift"><i class="fas fa-gift"></i></div>
+            <div class="floating-balloon"><i class="fas fa-birthday-cake"></i></div>
+        </div>
+    </div>
+
+    <!-- Modal para compartir -->
+    <div class="modal" id="shareModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>Compartir este regalo</h3>
+            <div class="share-options">
+                <button class="share-btn whatsapp" onclick="shareOnWhatsApp()">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </button>
+                <button class="share-btn facebook" onclick="shareOnFacebook()">
+                    <i class="fab fa-facebook"></i>
+                    Facebook
+                </button>
+                <button class="share-btn copy" onclick="copyLink()">
+                    <i class="fas fa-copy"></i>
+                    Copiar enlace
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="regalo.js"></script>
+</body>
+</html>

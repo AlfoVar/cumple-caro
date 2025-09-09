@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños Caro! 🎉</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Fondo animado con partículas -->
+    <div class="background-container">
+        <div class="particles"></div>
+        <div class="gradient-overlay"></div>
+    </div>
+
+    <!-- Contenedor principal -->
+    <div class="main-container">
+        <!-- Título de bienvenida -->
+        <div class="welcome-section">
+            <h1 class="birthday-title">
+                <span class="sparkle">✨</span>
+                ¡Hola Cho tengo una sorpresa para ti!
+                <span class="sparkle">✨</span>
+            </h1>
+            <p class="subtitle">Espero te guste...</p>
+        </div>
+
+        <!-- Sección de cuenta regresiva -->
+        <div class="countdown-section" id="countdownSection">
+            <h2 class="countdown-title">Tienes que esperar tu regalo se revelará en:</h2>
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Horas</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Minutos</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Segundos</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Caja de regalo -->
+        <div class="gift-container" id="giftContainer">
+            <div class="gift-box" id="giftBox">
+                <div class="gift-lid">
+                    <div class="gift-bow">
+                        <div class="bow-left"></div>
+                        <div class="bow-right"></div>
+                        <div class="bow-center"></div>
+                    </div>
+                </div>
+                <div class="gift-body"></div>
+                <div class="gift-ribbon-v"></div>
+                <div class="gift-ribbon-h"></div>
+            </div>
+            <div class="gift-glow"></div>
+        </div>
+
+        <!-- Botón para abrir el regalo -->
+        <div class="open-gift-section" id="openGiftSection" style="display: none;">
+            <button class="open-gift-btn" id="openGiftBtn">
+                <i class="fas fa-gift"></i>
+                ¡Abrir mi regalo!
+            </button>
+        </div>
+
+        <!-- Contenido del regalo (ya no se usa, se redirige a regalo.html) -->
+        <div class="gift-content" id="giftContent" style="display: none;">
+            <div class="gift-reveal">
+                <div class="heart-explosion">
+                    <i class="fas fa-heart heart"></i>
+                    <i class="fas fa-heart heart"></i>
+                    <i class="fas fa-heart heart"></i>
+                    <i class="fas fa-heart heart"></i>
+                    <i class="fas fa-heart heart"></i>
+                </div>
+                
+                <h2 class="gift-title">¡Redirigiendo a tu regalo! 💝</h2>
+                
+                <div class="gift-message">
+                    <p>Te estamos llevando a una sorpresa especial...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mensaje de felicitaciones flotantes -->
+        <div class="floating-messages">
+            <div class="floating-message">¡Felicidades! 🎉</div>
+            <div class="floating-message">¡Eres increíble! ⭐</div>
+            <div class="floating-message">¡Que tengas un día maravilloso! 🌸</div>
+        </div>
+    </div>
+
+    <!-- Confetti canvas -->
+    <canvas id="confetti"></canvas>
+
+    <script src="app.js"></script>
+</body>
+</html>
